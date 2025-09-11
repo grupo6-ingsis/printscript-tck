@@ -5,8 +5,8 @@ import interpreter.PrintScriptInterpreter;
 import interpreter.PrintScriptLinter;
 
 
-public class CustomImplementationFactory implements PrintScriptFactory {
 
+public class CustomImplementationFactory implements PrintScriptFactory {
     @Override
     public PrintScriptInterpreter interpreter() {
         // your PrintScript implementation should be returned here.
