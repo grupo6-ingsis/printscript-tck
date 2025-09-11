@@ -28,6 +28,12 @@ test {
 
 dependencies {
     testImplementation 'junit:junit:4.13.1'
+    implementation 'org.gudelker:ast:1.0.1-SNAPSHOT'
+    implementation 'org.gudelker:lexer:1.0.1-SNAPSHOT'
+    implementation 'org.gudelker:parser:1.0.1-SNAPSHOT'
+    implementation 'org.gudelker:interpreter:1.0.1-SNAPSHOT'
+    implementation 'org.gudelker:formatter:1.0.1-SNAPSHOT'
+    implementation 'org.gudelker:analyzer:1.0.1-SNAPSHOT'
 }
 
 test {
