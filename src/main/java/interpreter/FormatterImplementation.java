@@ -1,6 +1,8 @@
 package interpreter;
 
 import org.gudelker.DefaultFormatterFactory;
+import org.gudelker.DefaultLexer;
+import org.gudelker.LexerFactory;
 import org.gudelker.utilities.Version;
 
 import java.io.InputStream;
@@ -16,6 +18,11 @@ public class FormatterImplementation implements PrintScriptFormatter {
             case "1.1" -> v = Version.V2;
             default -> throw new IllegalArgumentException("Unsupported version: " + version);
         }
+
+        DefaultLexer lexer = LexerFactory.INSTANCE.createLexer(v);
+
+
+
         var formatter = DefaultFormatterFactory.INSTANCE.createFormatter(v);
     }
 }
