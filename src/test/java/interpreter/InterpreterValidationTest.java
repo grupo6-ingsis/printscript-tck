@@ -27,7 +27,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static util.SuiteOps.*;
 
 @RunWith(Parameterized.class)
-public class InterpreterValidationTest {
+public class
+InterpreterValidationTest {
 
     private static final String basePath = "src/test/resources/validation/";
     private final PrintScriptInterpreter interpreter = new CustomImplementationFactory().interpreter();
