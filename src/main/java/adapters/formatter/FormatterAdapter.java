@@ -6,6 +6,9 @@ import org.gudelker.DefaultFormatter;
 import org.gudelker.DefaultFormatterFactory;
 import org.gudelker.DefaultLexer;
 import org.gudelker.LexerFactory;
+import org.gudelker.result.LexerResult;
+import org.gudelker.result.LexerSyntaxError;
+import org.gudelker.sourcereader.InputStreamSourceReader;
 import org.gudelker.utilities.Version;
 
 import java.io.InputStream;
@@ -25,6 +28,8 @@ public class FormatterAdapter implements PrintScriptFormatter {
         }
 
         DefaultLexer lexer = LexerFactory.INSTANCE.createLexer(v);
+        InputStreamSourceReader inputStreamSourceReader = new InputStreamSourceReader(src,8192);
+        LexerResult tokensResult = lexer.lex(inputStreamSourceReader);
         DefaultFormatter formatter = DefaultFormatterFactory.INSTANCE.createFormatter(v);
 
     }
