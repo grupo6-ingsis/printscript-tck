@@ -4,8 +4,10 @@ import adapters.formatter.FormatterErrorHandler;
 import adapters.version.VersionAdapter;
 import interpreter.ErrorHandler;
 import interpreter.PrintScriptLinter;
-import org.gudelker.DefaultFormatter;
-import org.gudelker.DefaultFormatterFactory;
+import org.gudelker.*;
+import org.gudelker.linterloader.InputStreamLinterConfigLoaderToMap;
+import org.gudelker.result.CompoundResult;
+import org.gudelker.result.LintViolation;
 import org.gudelker.rules.FormatterRule;
 import org.gudelker.rules.InputStreamFormatterConfigLoaderToMap;
 import org.gudelker.sourcereader.InputStreamSourceReader;
@@ -36,12 +38,17 @@ public class LinterAdapter implements PrintScriptLinter {
         ParserRunner parserRunner = new ParserRunner();
         ParserRunnerResult parserRunnerResult = parserRunner.runParser(tokenStream, v, errorHandler);
 
-        // format
-        DefaultFormatter formatter = DefaultFormatterFactory.INSTANCE.createFormatter(v);
-        InputStreamFormatterConfigLoaderToMap loader = new InputStreamFormatterConfigLoaderToMap(config);
-        Map<String, FormatterRule> rules = loader.loadConfig();
-
         List<Statement> statements = parserRunnerResult.getStatements();
+        // After getting statements and rules
+        InputStreamLinterConfigLoaderToMap loader = new InputStreamLinterConfigLoaderToMap(config);
+        Map<String, LinterConfig> rules = loader.loadConfig();
+        StatementStream statementStream = new StatementStream(statements);
+        DefaultLinter linter = DefaultLinterFactory.INSTANCE.createLinter(v);
+        CompoundResult result = linter.lint(statementStream, rules);
+
+        for (LintViolation violation : result.getResults()) {
+            handler.reportError(violation.getMessage());
+        }
 
 
     }

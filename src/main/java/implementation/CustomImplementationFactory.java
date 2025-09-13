@@ -1,5 +1,6 @@
 package implementation;
 
+import adapters.analyzer.LinterAdapter;
 import adapters.formatter.FormatterAdapter;
 import interpreter.PrintScriptFormatter;
 import interpreter.PrintScriptInterpreter;
@@ -26,8 +27,6 @@ public class CustomImplementationFactory implements PrintScriptFactory {
 
     @Override
     public PrintScriptLinter linter() {
-        // your PrintScript linter should be returned here.
-        // make sure to ADAPT your linter to PrintScriptLinter interface.
-        throw new NotImplementedException("Needs implementation"); // TODO: implement
+        return new LinterAdapter();
     }
 }
