@@ -51,7 +51,6 @@ public class FormatterAdapter implements PrintScriptFormatter {
             Statement statement = statements.get(i);
             String formatted = formatter.format(statement, rules);
 
-            // Si es el último statement, eliminamos el salto de línea final
             if (i == lastIndex && formatted.endsWith("\n")) {
                 formatted = formatted.substring(0, formatted.length() - 1);
             }
