@@ -1,7 +1,5 @@
 package adapters.formatter;
 
-
-
 import adapters.version.VersionAdapter;
 import interpreter.PrintScriptFormatter;
 import org.gudelker.DefaultFormatter;
