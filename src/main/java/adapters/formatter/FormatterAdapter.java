@@ -19,6 +19,7 @@ import runners.parser.ParserRunnerResult;
 
 import java.io.InputStream;
 import java.io.Writer;
+import java.util.List;
 import java.util.Map;
 
 
@@ -42,9 +43,21 @@ public class FormatterAdapter implements PrintScriptFormatter {
         DefaultFormatter formatter = DefaultFormatterFactory.INSTANCE.createFormatter(v);
         InputStreamFormatterConfigLoaderToMap loader = new InputStreamFormatterConfigLoaderToMap(config);
         Map<String, FormatterRule> rules = loader.loadConfig();
-        for (Statement statement : parserRunnerResult.getStatements()) {
+
+        List<Statement> statements = parserRunnerResult.getStatements();
+        int lastIndex = statements.size() - 1;
+
+        for (int i = 0; i < statements.size(); i++) {
+            Statement statement = statements.get(i);
+            String formatted = formatter.format(statement, rules);
+
+            // Si es el último statement, eliminamos el salto de línea final
+            if (i == lastIndex && formatted.endsWith("\n")) {
+                formatted = formatted.substring(0, formatted.length() - 1);
+            }
+
             try {
-                writer.write(formatter.format(statement, rules));
+                writer.write(formatted);
             } catch (Exception e) {
                 //
             }
