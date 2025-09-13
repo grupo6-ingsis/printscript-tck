@@ -1,9 +1,10 @@
 package implementation;
 
+import adapters.formatter.FormatterAdapter;
 import interpreter.PrintScriptFormatter;
 import interpreter.PrintScriptInterpreter;
 import interpreter.PrintScriptLinter;
-
+import org.gudelker.Formatter;
 
 
 public class CustomImplementationFactory implements PrintScriptFactory {
@@ -19,11 +20,8 @@ public class CustomImplementationFactory implements PrintScriptFactory {
 
     @Override
     public PrintScriptFormatter formatter() {
-        // your PrintScript formatter should be returned here.
-        // make sure to ADAPT your formatter to PrintScriptFormatter interface.
-        throw new NotImplementedException("Needs implementation"); // TODO: implement
+        return new FormatterAdapter();
 
-        // Dummy impl: return (src, version, config, writer) -> { };
     }
 
     @Override
