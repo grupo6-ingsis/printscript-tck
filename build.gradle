@@ -29,15 +29,15 @@ test {
 
 dependencies {
     testImplementation 'junit:junit:4.13.1'
-    implementation 'org.gudelker:ast:1.0.13'
-    implementation 'org.gudelker:lexer:1.0.13'
-    implementation 'org.gudelker:parser:1.0.13'
-    implementation 'org.gudelker:interpreter:1.0.13'
-    implementation 'org.gudelker:formatter:1.0.13'
-    implementation 'org.gudelker:analyzer:1.0.13'
-    implementation 'org.gudelker:token:1.0.13'
-    implementation 'org.gudelker:utilities:1.0.13'
-    implementation 'org.gudelker:cli:1.0.13'
+    implementation 'org.gudelker:ast:1.0.15'
+    implementation 'org.gudelker:lexer:1.0.15'
+    implementation 'org.gudelker:parser:1.0.15'
+    implementation 'org.gudelker:interpreter:1.0.15'
+    implementation 'org.gudelker:formatter:1.0.15'
+    implementation 'org.gudelker:analyzer:1.0.15'
+    implementation 'org.gudelker:token:1.0.15'
+    implementation 'org.gudelker:utilities:1.0.15'
+    implementation 'org.gudelker:cli:1.0.15'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
