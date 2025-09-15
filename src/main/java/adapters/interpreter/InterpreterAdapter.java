@@ -8,9 +8,10 @@ import interpreter.PrintEmitter;
 import interpreter.PrintScriptInterpreter;
 import org.gudelker.DefaultInterpreter;
 import org.gudelker.InterpreterFactory;
+import org.gudelker.parser.tokenstream.TokenStream;
 import org.gudelker.sourcereader.InputStreamSourceReader;
 import org.gudelker.statements.interfaces.Statement;
-import org.gudelker.tokenstream.TokenStream;
+
 import org.gudelker.utilities.Version;
 import runners.lexer.LexerRunner;
 import runners.lexer.LexerRunnerResult;
@@ -39,9 +40,8 @@ public class InterpreterAdapter implements PrintScriptInterpreter {
 
         // Interpreter
         DefaultInterpreter interpreter = InterpreterFactory.INSTANCE.createInterpreter(v);
-/*
-        Result<List<Object>> result = interpreter.in
-*/
+        return interpreter.interpret()
+
 
     }
 }
