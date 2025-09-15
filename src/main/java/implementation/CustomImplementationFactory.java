@@ -5,7 +5,6 @@ import adapters.formatter.FormatterAdapter;
 import interpreter.PrintScriptFormatter;
 import interpreter.PrintScriptInterpreter;
 import interpreter.PrintScriptLinter;
-import org.gudelker.Formatter;
 
 
 public class CustomImplementationFactory implements PrintScriptFactory {

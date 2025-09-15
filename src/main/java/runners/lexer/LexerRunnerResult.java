@@ -1,5 +1,6 @@
 package runners.lexer;
-import org.gudelker.Token;
+import org.gudelker.token.Token;
+
 import java.util.List;
 
 public class LexerRunnerResult {

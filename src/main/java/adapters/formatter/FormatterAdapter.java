@@ -2,8 +2,8 @@ package adapters.formatter;
 
 import adapters.version.VersionAdapter;
 import interpreter.PrintScriptFormatter;
-import org.gudelker.DefaultFormatter;
-import org.gudelker.DefaultFormatterFactory;
+import org.gudelker.formatter.DefaultFormatter;
+import org.gudelker.formatter.DefaultFormatterFactory;
 import org.gudelker.parser.tokenstream.TokenStream;
 import org.gudelker.rules.FormatterRule;
 import org.gudelker.rules.InputStreamFormatterConfigLoaderToMap;

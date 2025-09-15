@@ -2,8 +2,8 @@
 package runners.lexer;
 
 import interpreter.ErrorHandler;
-import org.gudelker.DefaultLexer;
-import org.gudelker.LexerFactory;
+import org.gudelker.lexer.DefaultLexer;
+import org.gudelker.lexer.LexerFactory;
 import org.gudelker.result.LexerResult;
 import org.gudelker.result.LexerSyntaxError;
 import org.gudelker.result.ValidTokens;

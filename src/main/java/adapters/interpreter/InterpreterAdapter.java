@@ -6,8 +6,8 @@ import interpreter.ErrorHandler;
 import interpreter.InputProvider;
 import interpreter.PrintEmitter;
 import interpreter.PrintScriptInterpreter;
-import org.gudelker.DefaultInterpreter;
-import org.gudelker.InterpreterFactory;
+import org.gudelker.interpreter.DefaultInterpreter;
+import org.gudelker.interpreter.InterpreterFactory;
 import org.gudelker.parser.tokenstream.TokenStream;
 import org.gudelker.sourcereader.InputStreamSourceReader;
 import org.gudelker.statements.interfaces.Statement;
@@ -37,8 +37,6 @@ public class InterpreterAdapter implements PrintScriptInterpreter {
         ParserRunnerResult parserRunnerResult = parserRunner.runParser(tokenStream, v, errorHandler);
 
         List<Statement> statements = parserRunnerResult.getStatements();
-
-        // Interpreter
         DefaultInterpreter interpreter = InterpreterFactory.INSTANCE.createInterpreter(v);
 
 
