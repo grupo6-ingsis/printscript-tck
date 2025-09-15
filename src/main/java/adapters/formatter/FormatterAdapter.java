@@ -4,11 +4,11 @@ import adapters.version.VersionAdapter;
 import interpreter.PrintScriptFormatter;
 import org.gudelker.DefaultFormatter;
 import org.gudelker.DefaultFormatterFactory;
-import org.gudelker.parser.tokenstream.TokenStream;
 import org.gudelker.rules.FormatterRule;
 import org.gudelker.rules.InputStreamFormatterConfigLoaderToMap;
 import org.gudelker.sourcereader.InputStreamSourceReader;
 import org.gudelker.statements.interfaces.Statement;
+import org.gudelker.tokenstream.TokenStream;
 import org.gudelker.utilities.Version;
 import runners.lexer.LexerRunner;
 import runners.lexer.LexerRunnerResult;
@@ -17,6 +17,7 @@ import runners.parser.ParserRunnerResult;
 
 import java.io.InputStream;
 import java.io.Writer;
+import java.util.List;
 import java.util.Map;
 
 
@@ -42,13 +43,21 @@ public class FormatterAdapter implements PrintScriptFormatter {
 
         DefaultFormatter formatter = DefaultFormatterFactory.INSTANCE.createFormatter(v);
 
-        for (Statement statement : parserRunnerResult.getStatements()) {
+        List<Statement> statements = parserRunnerResult.getStatements();
+        for (int i = 0; i < statements.size(); i++) {
             try {
+                Statement statement = statements.get(i);
                 writer.write(formatter.format(statement, rules));
+                // Only add newline if not the last statement
+                if (i < statements.size() - 1) {
+                    writer.write("\n");
+                }
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
+
+
 
 
     }

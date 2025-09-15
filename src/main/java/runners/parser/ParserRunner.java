@@ -3,12 +3,9 @@ package runners.parser;
 import interpreter.ErrorHandler;
 import org.gudelker.parser.DefaultParser;
 import org.gudelker.parser.DefaultParserFactory;
-import org.gudelker.parser.result.ParserResult;
-import org.gudelker.parser.result.ParserSyntaxError;
-import org.gudelker.parser.result.Valid;
-import org.gudelker.parser.tokenstream.TokenStream;
 import org.gudelker.result.*;
 import org.gudelker.parser.*;
+import org.gudelker.tokenstream.TokenStream;
 import org.gudelker.utilities.Version;
 import runners.lexer.LexerRunnerResult;
 
