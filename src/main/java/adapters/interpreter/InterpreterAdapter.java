@@ -40,7 +40,6 @@ public class InterpreterAdapter implements PrintScriptInterpreter {
 
         // Interpreter
         DefaultInterpreter interpreter = InterpreterFactory.INSTANCE.createInterpreter(v);
-        return interpreter.interpret()
 
 
     }
