@@ -6,9 +6,14 @@ import interpreter.ErrorHandler;
 import interpreter.InputProvider;
 import interpreter.PrintEmitter;
 import interpreter.PrintScriptInterpreter;
+import org.gudelker.interpreter.ChunkBaseFactory;
+import org.gudelker.interpreter.ChunkBaseInterpreter;
 import org.gudelker.interpreter.DefaultInterpreter;
 import org.gudelker.interpreter.InterpreterFactory;
 import org.gudelker.parser.tokenstream.TokenStream;
+import org.gudelker.result.InterpreterResult;
+import org.gudelker.result.InvalidInterpreterResult;
+import org.gudelker.result.ValidInterpretResult;
 import org.gudelker.sourcereader.InputStreamSourceReader;
 import org.gudelker.statements.interfaces.Statement;
 
@@ -37,7 +42,25 @@ public class InterpreterAdapter implements PrintScriptInterpreter {
         ParserRunnerResult parserRunnerResult = parserRunner.runParser(tokenStream, v, errorHandler);
 
         List<Statement> statements = parserRunnerResult.getStatements();
-        DefaultInterpreter interpreter = InterpreterFactory.INSTANCE.createInterpreter(v);
+        ChunkBaseInterpreter interpreter = ChunkBaseFactory.INSTANCE.createInterpreter(v);
+        InterpreterResult result = interpreter.interpret(statements);
+        if(result instanceof InvalidInterpreterResult) {
+            Throwable exception = ((InvalidInterpreterResult) result).getException();
+            handler.reportError(exception.getMessage());
+        }
+
+        if(result instanceof ValidInterpretResult) {
+            List<?> values = ((ValidInterpretResult) result).getValue();
+            for (Object value : values) {
+                if (value != null) {
+                    emitter.print(value.toString());
+                }
+            }
+        }
+
+
+
+
     }
 }
 
