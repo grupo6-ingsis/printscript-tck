@@ -38,7 +38,6 @@ public class InterpreterAdapter implements PrintScriptInterpreter {
 
         List<Statement> statements = parserRunnerResult.getStatements();
         DefaultInterpreter interpreter = InterpreterFactory.INSTANCE.createInterpreter(v);
-
     }
 }
 
