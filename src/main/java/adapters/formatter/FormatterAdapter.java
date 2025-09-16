@@ -48,10 +48,11 @@ public class FormatterAdapter implements PrintScriptFormatter {
         for (int i = 0; i < statements.size(); i++) {
             try {
                 Statement statement = statements.get(i);
-                writer.write(formatter.format(statement, rules));
-                // Only add newline if not the last statement
-                if (i < statements.size() - 1) {
-                    writer.write("\n");
+                if (i == statements.size() - 1) {
+                    String result = formatter.format(statement, rules);
+                    writer.write(removeTrailingNewline(result));
+                } else {
+                    writer.write(formatter.format(statement, rules));
                 }
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -62,4 +63,11 @@ public class FormatterAdapter implements PrintScriptFormatter {
 
 
     }
+    public static String removeTrailingNewline(String str) {
+        if (str.endsWith("\n")) {
+            return str.substring(0, str.length() - 1);
+        }
+        return str;
+    }
+
 }
