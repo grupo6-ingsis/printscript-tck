@@ -35,16 +35,22 @@ public class InterpreterAdapter implements PrintScriptInterpreter {
         InputStreamSourceReader inputStreamSourceReader = new InputStreamSourceReader(src, 8192);
         FormatterErrorHandler errorHandler = new FormatterErrorHandler();
         LexerRunnerResult tokensResult = lexer.runLexer(inputStreamSourceReader, v, errorHandler);
+        if(tokensResult.hasError()){
+            handler.reportError(tokensResult.getErrorMessage());
+        }
 
         // Parser
         TokenStream tokenStream = new TokenStream(tokensResult.getTokens());
         ParserRunner parserRunner = new ParserRunner();
         ParserRunnerResult parserRunnerResult = parserRunner.runParser(tokenStream, v, errorHandler);
-
         List<Statement> statements = parserRunnerResult.getStatements();
+        if(parserRunnerResult.hasError()){
+            handler.reportError(parserRunnerResult.getErrorMessage());
+        }
+
         ChunkBaseInterpreter interpreter = ChunkBaseFactory.INSTANCE.createInterpreter(v);
         InterpreterResult result = interpreter.interpret(statements);
-        if(result instanceof InvalidInterpreterResult) {
+        if (result instanceof InvalidInterpreterResult) {
             Throwable exception = ((InvalidInterpreterResult) result).getException();
             handler.reportError(exception.getMessage());
         }
