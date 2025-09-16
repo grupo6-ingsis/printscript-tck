@@ -52,7 +52,7 @@ public class InterpreterAdapter implements PrintScriptInterpreter {
         if(result instanceof ValidInterpretResult) {
             List<?> values = ((ValidInterpretResult) result).getValue();
             for (Object value : values) {
-                if (value != null) {
+                if (value != null && !"kotlin.Unit".equals(value.toString())) {
                     emitter.print(value.toString());
                 }
             }
