@@ -16,9 +16,7 @@ public class InputProviderAdapter implements org.gudelker.inputprovider.InputPro
 
     @Override
     public @NotNull String nextInput(@NotNull String prompt) {
-        // primero mostramos el prompt
         emitter.print(prompt);
-        // luego devolvemos lo que el usuario ingresó
         return delegate.input(prompt);
     }
 }
