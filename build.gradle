@@ -27,7 +27,7 @@ test {
     maxHeapSize = "7m" // maximum heap size
 }
 ext {
-    gudelkerVersion = '1.1.37' // Change here only
+    gudelkerVersion = '1.1.40' // Change here only
 }
 
 dependencies {

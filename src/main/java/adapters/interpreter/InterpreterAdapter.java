@@ -6,10 +6,9 @@ import interpreter.ErrorHandler;
 import interpreter.InputProvider;
 import interpreter.PrintEmitter;
 import interpreter.PrintScriptInterpreter;
+import org.gudelker.inputprovider.ReadProvider;
 import org.gudelker.interpreter.ChunkBaseFactory;
 import org.gudelker.interpreter.ChunkBaseInterpreter;
-import org.gudelker.interpreter.DefaultInterpreter;
-import org.gudelker.interpreter.InterpreterFactory;
 import org.gudelker.parser.tokenstream.TokenStream;
 import org.gudelker.result.InterpreterResult;
 import org.gudelker.result.InvalidInterpreterResult;
@@ -48,7 +47,8 @@ public class InterpreterAdapter implements PrintScriptInterpreter {
             handler.reportError(parserRunnerResult.getErrorMessage());
         }
 
-        ChunkBaseInterpreter interpreter = ChunkBaseFactory.INSTANCE.createInterpreter(v);
+        ChunkBaseInterpreter interpreter = ChunkBaseFactory.INSTANCE.createInterpreter(v, new InputProviderAdapter(provider,emitter));
+
         InterpreterResult result = interpreter.interpret(statements);
         if (result instanceof InvalidInterpreterResult) {
             Throwable exception = ((InvalidInterpreterResult) result).getException();
