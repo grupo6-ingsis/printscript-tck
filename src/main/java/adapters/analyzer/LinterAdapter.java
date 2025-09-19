@@ -15,7 +15,6 @@ import org.gudelker.statements.interfaces.Statement;
 import org.gudelker.parser.tokenstream.TokenStream;
 import org.gudelker.stmtposition.StatementStream;
 import org.gudelker.utilities.Version;
-import runners.lexer.LexerRunner;
 import runners.lexer.LexerRunnerResult;
 import runners.parser.ParserRunner;
 import runners.parser.ParserRunnerResult;
@@ -24,7 +23,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
-public class LinterAdapter implements PrintScriptLinter {
+/*public class LinterAdapter implements PrintScriptLinter {
     @Override
     public void lint(InputStream src, String version, InputStream config, ErrorHandler handler) {
         Version v = VersionAdapter.toVersion(version);
@@ -53,4 +52,4 @@ public class LinterAdapter implements PrintScriptLinter {
 
 
     }
-}
+}*/

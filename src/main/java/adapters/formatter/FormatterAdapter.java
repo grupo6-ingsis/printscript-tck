@@ -11,7 +11,6 @@ import org.gudelker.sourcereader.InputStreamSourceReader;
 import org.gudelker.statements.interfaces.Statement;
 
 import org.gudelker.utilities.Version;
-import runners.lexer.LexerRunner;
 import runners.lexer.LexerRunnerResult;
 import runners.parser.ParserRunner;
 import runners.parser.ParserRunnerResult;
@@ -22,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class FormatterAdapter implements PrintScriptFormatter {
+/* public class FormatterAdapter implements PrintScriptFormatter {
 
     @Override
     public void format(InputStream src, String version, InputStream config, Writer writer) {
@@ -70,4 +69,4 @@ public class FormatterAdapter implements PrintScriptFormatter {
         return str;
     }
 
-}
+}*/
