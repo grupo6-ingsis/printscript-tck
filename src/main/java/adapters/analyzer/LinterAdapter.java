@@ -1,28 +1,5 @@
 package adapters.analyzer;
 
-import adapters.formatter.FormatterErrorHandler;
-import adapters.version.VersionAdapter;
-import interpreter.ErrorHandler;
-import interpreter.PrintScriptLinter;
-import org.gudelker.linter.DefaultLinter;
-import org.gudelker.linter.DefaultLinterFactory;
-import org.gudelker.linter.LinterConfig;
-import org.gudelker.linterloader.InputStreamLinterConfigLoaderToMap;
-import org.gudelker.result.CompoundResult;
-import org.gudelker.result.LintViolation;
-import org.gudelker.sourcereader.InputStreamSourceReader;
-import org.gudelker.statements.interfaces.Statement;
-import org.gudelker.parser.tokenstream.TokenStream;
-import org.gudelker.stmtposition.StatementStream;
-import org.gudelker.utilities.Version;
-import runners.lexer.LexerRunnerResult;
-import runners.parser.ParserRunner;
-import runners.parser.ParserRunnerResult;
-
-import java.io.InputStream;
-import java.util.List;
-import java.util.Map;
-
 /*public class LinterAdapter implements PrintScriptLinter {
     @Override
     public void lint(InputStream src, String version, InputStream config, ErrorHandler handler) {
