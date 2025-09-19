@@ -1,4 +1,6 @@
 package implementation;
+import adapters.analyzer.LinterAdapter;
+import adapters.formatter.FormatterAdapter;
 import adapters.interpreter.InterpreterAdapter;
 import interpreter.PrintScriptFormatter;
 import interpreter.PrintScriptInterpreter;
@@ -13,12 +15,11 @@ public class CustomImplementationFactory implements PrintScriptFactory {
 
     @Override
     public PrintScriptFormatter formatter() {
-        throw new UnsupportedOperationException("Not implemented yet");
-
+        return new FormatterAdapter();
     }
 
     @Override
     public PrintScriptLinter linter() {
-        throw new UnsupportedOperationException("Not implemented yet");
+       return new LinterAdapter();
     }
 }
