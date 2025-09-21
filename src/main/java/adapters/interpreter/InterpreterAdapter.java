@@ -13,7 +13,7 @@ import org.gudelker.lexer.StreamingLexer;
 import org.gudelker.parser.DefaultParser;
 import org.gudelker.parser.DefaultParserFactory;
 import org.gudelker.parser.StreamingParser;
-import org.gudelker.pipeline.StreamingPipeline;
+import org.gudelker.StreamingPipeline;
 
 import org.gudelker.sourcereader.InputStreamSourceReader;
 import org.gudelker.utilities.Version;
@@ -43,7 +43,7 @@ public class InterpreterAdapter implements PrintScriptInterpreter {
                 return true;
             });
             if (!success) {
-                handler.reportError("ERROR");
+                handler.reportError(pipeline.getLastErrorMessage());
             }
             else{
                 for(String result : processedResults){
